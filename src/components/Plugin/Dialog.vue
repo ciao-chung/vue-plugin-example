@@ -1,7 +1,8 @@
 <template>
-  <div vue-dialog v-if="open">
-    <h2>Dialog Title</h2>
+  <div vue-dialog v-if="active">
+    <h2>{{title}}</h2>
     <div>{{content}}</div>
+    <button @click="close">close</button>
   </div>
 </template>
 
@@ -10,17 +11,22 @@ import { events } from '@/components/Plugin/Events.js'
 export default {
   data() {
     return {
+      title: null,
       content: null,
-      open: false,
+      active: false,
     }
   },
-  created() {
-    events.$on('dialog', this.toggle)
+  async created() {
+    events.$on('dialog', this.open)
   },
   methods: {
-    toggle(options) {
-      this.open = !this.open
-      this.content = options
+    open(options) {
+      this.active = true
+      this.title = options.title || 'Title'
+      this.content = options.content || null
+    },
+    close() {
+      this.active = false
     },
   },
 }
@@ -29,6 +35,7 @@ export default {
 <style lang="sass" type="text/sass" scoped>
 div[vue-dialog]
   position: fixed
+  z-index: 5000
   top: 100px
   left: calc(100vw/2 - 400px/2)
   border: 2px gray solid
