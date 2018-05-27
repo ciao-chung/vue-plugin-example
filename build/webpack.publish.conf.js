@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 
 const env = require('../config/publish.env')
 
@@ -64,7 +65,16 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.publish.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    new WebpackShellPlugin({
+      onBuildStart: [
+        'rm -rf publish/dist/',
+      ],
+      onBuildEnd: [
+        'cp README.md publish/'
+      ],
+    }),
   ]
 })
 
