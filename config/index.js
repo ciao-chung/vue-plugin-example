@@ -68,13 +68,9 @@ module.exports = {
   },
 
   publish: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../docs/index.html'),
-
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../docs'),
+    assetsRoot: path.resolve(__dirname, '../publish'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/vue-plugin-example/',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps

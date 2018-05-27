@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// 安裝Plugin,
 import Vue from 'vue'
 import Dialog from '@/components/Plugin/Installer.js'
 Vue.use(Dialog)
