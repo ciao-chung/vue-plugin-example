@@ -1,0 +1,9 @@
+{
+  "name": "vue-plugin-example",
+  "version": "1.0.0",
+  "description": "A Vue plugin example",
+  "main": "dist/vue-plugin-example.js",
+  "repository": "https://github.com/ciao-chung/vue-plugin-example",
+  "author": "Ciao <ciao0958@gmail.com>",
+  "license": "MIT"
+}
