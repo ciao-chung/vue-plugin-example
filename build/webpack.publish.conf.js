@@ -28,6 +28,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: 'dist/vue-plugin-example.js',
     libraryTarget: 'umd',
   },
+  externals: [
+    /^vue$/i,
+  ],
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
